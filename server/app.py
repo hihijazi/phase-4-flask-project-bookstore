@@ -6,19 +6,16 @@ from models import db, User, Book, Order, OrderBook, populate_fake_data
 app = Flask(__name__)
 CORS(app)
 
-# Configuration for the database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///bookstore.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Initialize the database
 db.init_app(app)
 
-# Create the tables in the database
 with app.app_context():
     db.create_all()
-    populate_fake_data()  # Populate the database with fake data
+    populate_fake_data()  
 
-# Routes
+
 @app.route('/books', methods=['GET'])
 def get_books():
     books = Book.query.all()
