@@ -84,6 +84,12 @@ running:
 npm start --prefix client
 ```
 
+## Many-to-many
+
+- User has many orders through books
+- Orders has many users through books
+- Books belong to orders, and a user
+
 ## Validations 
 
 Add validations to the `Books` model:
