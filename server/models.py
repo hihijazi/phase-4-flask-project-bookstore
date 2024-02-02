@@ -41,3 +41,6 @@ class Order(db.Model, SerializerMixin):
     
     def __repr__(self):
         return f'<Class {self.id}: {self.name}>'
+
+
+
