@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logoGif from '../assets/logo.gif';
 
 const Header = () => {
     return (
         <header>
+            <img src={logoGif} alt="Logo" />
             <div>
                 <h1>Bookstore Management System</h1>
             </div>
@@ -20,3 +22,6 @@ const Header = () => {
 };
 
 export default Header;
+
+
+
