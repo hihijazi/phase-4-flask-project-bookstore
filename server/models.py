@@ -1,53 +1,43 @@
+from sqlalchemy_serializer import SerializerMixin
+from sqlalchemy.ext.associationproxy import association_proxy
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import relationship
-from faker import Faker
+from sqlalchemy.orm import validates
+from config import db, metadata
+
 
 db = SQLAlchemy()
-fake = Faker()
 
-class User(db.Model):
+# Models begin here! 
+
+
+class Order(db.Model, SerializerMixin):
+    __tablename__ = 'orders'
+
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(50), unique=True, nullable=False)
-    email = db.Column(db.String(100), unique=True, nullable=False)
-    password = db.Column(db.String(100), nullable=False)
-    orders = relationship('Order', backref='user', lazy=True)
+    name = db.Column(db.String)
 
-class Book(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    author = db.Column(db.String(100), nullable=False)
-    genre = db.Column(db.String(50), nullable=False)
-    price = db.Column(db.Float, nullable=False)
-    orders = relationship('Order', secondary='order_book', backref='books')
+    # Add relationship
+    book_id = db.Column(db.Integer, db.ForeignKey('books.id'))
+    customer_id = db.Column(db.Integer, db.ForeignKey('customers.id'))
 
-class Order(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    order_date = db.Column(db.DateTime, nullable=False)
-    total_price = db.Column(db.Float, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    book = db.relationship('Book', back_populates='orders')
+    customer = db.relationship('Customer', back_populates='orders')
 
-class OrderBook(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    order_id = db.Column(db.Integer, db.ForeignKey('order.id'), nullable=False)
-    book_id = db.Column(db.Integer, db.ForeignKey('book.id'), nullable=False)
-    rating = db.Column(db.Integer, nullable=True)
+    # Add serialization rules
+    serialize_rules=('-book.orders', '-customer.orders')
 
-
-def populate_fake_data():
-    for _ in range(10):  
-        username = fake.user_name()
-        email = fake.email()
-        password = fake.password()
-        user = User(username=username, email=email, password=password)
-        db.session.add(user)
-
-    for _ in range(20):  
-        title = fake.sentence(nb_words=3)
-        author = fake.name()
-        genre = fake.word()
-        price = fake.random_number(digits=2)
-        book = Book(title=title, author=author, genre=genre, price=price)
-        db.session.add(book)
-
-    db.session.commit()
-
+    # Add validation 
+    @validates('name')
+    def validate_name(self, key, value):
+        if not value:
+            raise ValueError('Must add name!')
+        return value
+    
+    @validates('price')
+    def validate_price(self, key, value):
+        if not 1 <= value <= 20:
+            raise ValueError('Price must be between 1 and 20!')
+        return value
+    
+    def __repr__(self):
+        return f'<Class {self.id}: {self.name}>'
