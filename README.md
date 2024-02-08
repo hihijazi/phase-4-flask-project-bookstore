@@ -117,7 +117,7 @@ PATCH  /orders/:id
 DELETE /orders/:id
 ```      
 
-## Serialize Rulse 
+## Serialize Rules
 ```console
 -
 -
