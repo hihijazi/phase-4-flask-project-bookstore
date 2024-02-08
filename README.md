@@ -77,7 +77,7 @@ Add validations to the `Books` model:
 
 - must have a name
 
-Add validations to the `Books` model:
+Add validations to the `Orders` model:
 - must have a name
 - must have a price between 1 and 20
 
