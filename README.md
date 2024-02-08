@@ -81,4 +81,21 @@ Add validations to the `Books` model:
 - must have a name
 - must have a price between 1 and 20
 
+CONTROLLERS
+​​API routes RESTful conventions
+
+GET /books/
+POST /books/
+
+GET /books/<int:id>
+PATCH /books/<int:id>
+DELETE /books/<int:id>
+
+GET /classes/
+POST /classes/
+
+GET /login/<int:id>
+PATCH /login/<int:id>
+DELETE /login/<int:id>
+
 
