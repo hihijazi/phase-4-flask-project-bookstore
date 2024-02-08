@@ -1,6 +1,6 @@
 # Flask Project - H&M Bookstore Management App
 
-## Contributors: Hadil Hijazi & Melissa Velasquez Greene
+## Owners: Hadil Hijazi & Melissa Velasquez Greene
 
 ## Description: This App allows you to streamline your bookstore operations with our Flask and React-based Bookstore Management App. Seamlessly manage inventory, process orders, and provide a user-friendly interface for customers to browse, purchase, and review books. With intuitive features and robust functionality, our application simplifies bookstore management while enhancing the user experience.
 
