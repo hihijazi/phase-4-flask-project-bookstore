@@ -71,7 +71,7 @@ running:
 npm start --prefix client
 ```
 
-## Validations
+## Validations Controllers
 
 Add validations to the `Books` model:
 
@@ -81,22 +81,28 @@ Add validations to the `Books` model:
 - must have a name
 - must have a price between 1 and 20
 
-CONTROLLERS
+## Controllers
 
 ​​API routes RESTful conventions
 
 GET /books/
+
 POST /books/
 
 GET /books/<int:id>
+
 PATCH /books/<int:id>
+
 DELETE /books/<int:id>
 
-GET /classes/
-POST /classes/
+GET /login/
+
+POST /login/
 
 GET /orders/<int:id>
+
 PATCH /orders/<int:id>
+
 DELETE /orders/<int:id>
 
 
