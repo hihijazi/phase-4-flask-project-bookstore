@@ -82,6 +82,7 @@ Add validations to the `Books` model:
 - must have a price between 1 and 20
 
 CONTROLLERS
+
 ​​API routes RESTful conventions
 
 GET /books/
@@ -94,8 +95,8 @@ DELETE /books/<int:id>
 GET /classes/
 POST /classes/
 
-GET /login/<int:id>
-PATCH /login/<int:id>
-DELETE /login/<int:id>
+GET /orders/<int:id>
+PATCH /orders/<int:id>
+DELETE /orders/<int:id>
 
 
