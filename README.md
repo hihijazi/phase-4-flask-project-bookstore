@@ -83,7 +83,7 @@ Add validations to the `Books` model:
 
 ## Controllers
 
-​​# API routes RESTful conventions
+​​API routes RESTful conventions
 
 ```console
 GET    /books/              
