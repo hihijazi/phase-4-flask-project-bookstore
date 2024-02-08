@@ -6,6 +6,8 @@
 
 ## Description: This App allows you to streamline your bookstore operations.  Manage inventory, process orders, and provide a user-friendly interface for customers to browse, purchase, and review books. 
 
+![project domain model](https://github.com/hihijazi/phase-4-flask-project-bookstore/assets/148264944/9105c87d-6c8a-4b0a-a297-d883fdb5f8be)
+
 In this repo:
 
 - There is a Flask application with some features built out.
