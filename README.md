@@ -71,7 +71,7 @@ running:
 npm start --prefix client
 ```
 
-## Validations Controllers
+## Validations 
 
 Add validations to the `Books` model:
 
