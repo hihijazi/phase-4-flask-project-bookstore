@@ -32,16 +32,16 @@ class OrderBook(db.Model):
     book_id = db.Column(db.Integer, db.ForeignKey('book.id'), nullable=False)
     rating = db.Column(db.Integer, nullable=True)
 
-# Function to populate the database with fake data
+
 def populate_fake_data():
-    for _ in range(10):  # Create 10 fake users
+    for _ in range(10):  
         username = fake.user_name()
         email = fake.email()
         password = fake.password()
         user = User(username=username, email=email, password=password)
         db.session.add(user)
 
-    for _ in range(20):  # Create 20 fake books
+    for _ in range(20):  
         title = fake.sentence(nb_words=3)
         author = fake.name()
         genre = fake.word()
