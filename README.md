@@ -85,18 +85,24 @@ Add validations to the `Books` model:
 
 ​​# API routes RESTful conventions
 
+```console
 GET    /books/              
 POST   /books/             
 GET    /books/:id           
 PATCH  /books/:id           
-DELETE /books/:id           
+DELETE /books/:id
+```          
 
+```console
 GET    /login/             
-POST   /login/               
+POST   /login/
+```           
 
+```console
 GET    /orders/:id         
 PATCH  /orders/:id         
-DELETE /orders/:id          
+DELETE /orders/:id
+```      
    
 
 
