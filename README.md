@@ -8,6 +8,19 @@
 
 ![project domain model](https://github.com/hihijazi/phase-4-flask-project-bookstore/assets/148264944/9105c87d-6c8a-4b0a-a297-d883fdb5f8be)
 
+## MVP 
+##CRUD 
+
+C. Add books, orders, and logins
+
+R. Search books andorders
+
+U. Update books and orders 
+
+D. Delete books 
+
+
+
 In this repo:
 
 - There is a Flask application with some features built out.
