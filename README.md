@@ -83,26 +83,21 @@ Add validations to the `Books` model:
 
 ## Controllers
 
-​​API routes RESTful conventions
+​​# API routes RESTful conventions
 
-GET /books/
+GET    /books/              
+POST   /books/             
+GET    /books/:id           
+PATCH  /books/:id           
+DELETE /books/:id           
 
-POST /books/
+GET    /login/             
+POST   /login/               
 
-GET /books/<int:id>
+GET    /orders/:id         
+PATCH  /orders/:id         
+DELETE /orders/:id          
+   
 
-PATCH /books/<int:id>
-
-DELETE /books/<int:id>
-
-GET /login/
-
-POST /login/
-
-GET /orders/<int:id>
-
-PATCH /orders/<int:id>
-
-DELETE /orders/<int:id>
 
 
