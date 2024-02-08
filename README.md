@@ -1,4 +1,4 @@
-# Flask Project - H&M Bookstore Management App
+# H&M Bookstore Management App
 
 ## Owners: Hadil Hijazi & Melissa Velasquez Greene
 
