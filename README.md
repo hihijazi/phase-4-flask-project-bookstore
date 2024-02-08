@@ -116,7 +116,23 @@ GET    /orders/:id
 PATCH  /orders/:id         
 DELETE /orders/:id
 ```      
-   
+
+## Serialize Rulse 
+```console
+-
+-
+-
+
+FRONTEND (REACT) Which components will make requests to your API? What route will the competent send fetch requests too? (i.e: ArtistForm, send a POST requests to /artists)
+```
+```console
+EXTRA!
+Stretch goals:
+-
+-
+-
+```
+
 
 
 
