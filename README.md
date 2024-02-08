@@ -70,3 +70,15 @@ running:
 ```sh
 npm start --prefix client
 ```
+
+## Validations
+
+Add validations to the `Books` model:
+
+- must have a name
+
+Add validations to the `Books` model:
+- must have a name
+- must have a price between 1 and 20
+
+
