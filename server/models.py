@@ -5,49 +5,28 @@ from faker import Faker
 db = SQLAlchemy()
 fake = Faker()
 
-class User(db.Model):
+class Customer(db.Model, SerializerMixin):
+    __tablename__ = 'customers'
+
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(50), unique=True, nullable=False)
-    email = db.Column(db.String(100), unique=True, nullable=False)
-    password = db.Column(db.String(100), nullable=False)
-    orders = relationship('Order', backref='user', lazy=True)
+    name = db.Column(db.String)
+    
+    # Add relationship
+    classes = db.relationship('Order', back_populates='customer', cascade = 'all, delete')
 
-class Book(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    author = db.Column(db.String(100), nullable=False)
-    genre = db.Column(db.String(50), nullable=False)
-    price = db.Column(db.Float, nullable=False)
-    orders = relationship('Order', secondary='order_book', backref='books')
+    # Add serialization rules
+    serialize_rules=('-Orders.customer',)
 
-class Order(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    order_date = db.Column(db.DateTime, nullable=False)
-    total_price = db.Column(db.Float, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-
-class OrderBook(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    order_id = db.Column(db.Integer, db.ForeignKey('order.id'), nullable=False)
-    book_id = db.Column(db.Integer, db.ForeignKey('book.id'), nullable=False)
-    rating = db.Column(db.Integer, nullable=True)
-
-
-def populate_fake_data():
-    for _ in range(10):  
-        username = fake.user_name()
-        email = fake.email()
-        password = fake.password()
-        user = User(username=username, email=email, password=password)
-        db.session.add(user)
-
-    for _ in range(20):  
-        title = fake.sentence(nb_words=3)
-        author = fake.name()
-        genre = fake.word()
-        price = fake.random_number(digits=2)
-        book = Book(title=title, author=author, genre=genre, price=price)
-        db.session.add(book)
-
-    db.session.commit()
-
+    @validates('id', 'name')
+    def validate_customer(self, key, value):
+        if key == 'name':
+            if not value or (not isinstance(value, str)):
+                raise ValueError('Name must be a chracter!')
+            return value
+        if key == 'id':
+            if not 50 <= value <= 100:
+                raise ValueError('Id must be between 50 and 100!')
+            return value
+    
+    def __repr__(self):
+        return f'<Customer {self.id}: {self.name} >'
