@@ -6,7 +6,7 @@
 
 ## Description: This App allows you to streamline your bookstore operations.  Manage inventory, process orders, and provide a user-friendly interface for customers to browse, purchase, and review books. 
 
-![project domain model](https://github.com/hihijazi/phase-4-flask-project-bookstore/assets/148264944/9105c87d-6c8a-4b0a-a297-d883fdb5f8be)
+![Screenshot 2024-02-12 104333](https://github.com/hihijazi/phase-4-flask-project-bookstore/assets/148264944/2b9ca23c-b32b-4c4c-816f-0cb3bf66ecff)
 
 ## MVP 
 ##CRUD 
