@@ -53,6 +53,8 @@ class Book(db.Model, SerializerMixin):
             raise ValueError('Must have a name.')
         return name
 
+
+
     @validates('price')
     def validate_price(self, key, price):
         if price >= 0:
@@ -96,4 +98,5 @@ class Order(db.Model, SerializerMixin):
     
     def __repr__(self):
         return f'<Class {self.id}: {self.name}>'
+
 

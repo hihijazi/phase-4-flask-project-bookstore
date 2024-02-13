@@ -7,7 +7,7 @@ const Header = () => {
         <header>
             <img src={logoGif} alt="Logo" />
             <div>
-                <h1>Bookstore Management System</h1>
+                <h1>Welcome to Blast Bookstore </h1>
             </div>
             <nav>
                 <ul>
