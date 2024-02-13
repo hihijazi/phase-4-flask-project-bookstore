@@ -33,7 +33,7 @@ class Books(Resource):
             )
             db.session.add(new_book)
             db.session.commit()
-            return make_response(new_book.to_dict(rules = ('-orders')), 201)
+            return make_response(new_book.to_dict(rules = ('-orders',)), 201)
         except ValueError:
             return make_response({
                 'error':'Validation Error'
@@ -48,6 +48,7 @@ class BooksById(Resource):
             return make_response({
                 'error' : 'No Book found'
             }, 404)
+        
     def patch(self, id):
         book = Book.query.filter(Book.id == id).first()
         if book:
@@ -61,6 +62,7 @@ class BooksById(Resource):
                 return make_response({
                     'error': 'Validation error'
                 }, 404)
+            
     def delete(self, id):
         book = Book.query.filter(Book.id == id).first()
         if book:
@@ -74,7 +76,55 @@ class BooksById(Resource):
 class Customers(Resource):
     def get(self):
         customer = [customer.to_dict() for customer in Customer.all]
-                    
+        return make_response(customer, 200)
+    
+    def post(get):
+        data = data.get_json()
+        try:
+            new_customer = Customer(
+                name = data['name']
+            )
+            db.session.add(new_customer)
+            db.session.commit()
+            return make_response(new_customer.to_dict(rules =('-orders',)), 201)
+        except ValueError:
+            return make_response({
+                'error': 'Validation Error'
+            })
+        
+class OrdersById(Resource):
+    def get(self, id):
+        order = Order.query.filter(Order.id == id).first()
+        if order:
+            return make_response(order.to_dict(), 200)
+        else:
+            return make_response({
+                'error': 'No Order found'
+            }, 404)
+        
+    def patch(self, id):
+        order = Order.query.filter(Order.id == id).first()
+        try:
+            data = request.get_json()
+            for attr in data:
+                setattr(order, attr, data[attr])
+                db.session.commit()
+                return make_response(order.to_dict(), 202)
+        except ValueError:
+            return make_response({
+                'error': 'Validation error'
+            },404)
+    
+    def delete(self, id):
+        order = Order.query.filter(Order.id == id).first()
+        if order:
+            db.session.delete(order)
+            db.session.commit()
+            return make_response({}, 204)
+        return make_response({
+            'error': 'No book found'
+        }, 404)
+        
 
 if __name__ == '__main__':
     app.run(debug=True)
