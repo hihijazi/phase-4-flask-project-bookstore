@@ -9,6 +9,22 @@ db = SQLAlchemy()
 
 # Models begin here! 
 
+class Book():
+    tablename = "books"
+
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String)
+    price = db.Column(db.Float)
+
+    order = db.relationship('Order', back_populates= 'book')
+
+    @validates('price')
+    def validate_price(self, key, price):
+        if price >= 0:
+            return price
+        else:
+            raise ValueError('Price must be a valid integer')
+
 
 class Order(db.Model, SerializerMixin):
     __tablename__ = 'orders'
