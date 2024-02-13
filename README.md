@@ -86,9 +86,9 @@ npm start --prefix client
 
 ## Many-to-many
 
-- User has many orders through books
-- Orders has many users through books
-- Books belong to orders, and a user
+- Customer has many orders through books
+- Orders has many customerss through books
+- Books belong to orders, and a customer
 
 ## Validations 
 
