@@ -11,9 +11,9 @@
 ## MVP 
 ##CRUD 
 
-C. Add books, orders, and logins
+C. Add books, orders, and customers
 
-R. Search books andorders
+R. Search books and orders
 
 U. Update books and orders 
 
@@ -53,7 +53,6 @@ running:
 python server/app.py
 ```
 
-You can run your React app on [`localhost:3000`](http://localhost:3000) by
 running:
 
 ```sh
@@ -86,9 +85,9 @@ npm start --prefix client
 
 ## Many-to-many
 
-- User has many orders through books
-- Orders has many users through books
-- Books belong to orders, and a user
+- Customer has many orders through books
+- Orders has many customerss through books
+- Books belong to orders, and a customer
 
 ## Validations 
 
@@ -102,7 +101,7 @@ Add validations to the `Orders` model:
 
 ## Controllers
 
-​​API routes RESTful conventions
+API routes RESTful conventions
 
 ```console
 GET    /books/              
@@ -113,8 +112,8 @@ DELETE /books/:id
 ```          
 
 ```console
-GET    /login/             
-POST   /login/
+GET    /customer/             
+POST   /customer/
 ```           
 
 ```console
