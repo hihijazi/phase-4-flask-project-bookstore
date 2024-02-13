@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import faker from 'faker'; 
 
 const BookList = () => {
-
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
@@ -22,20 +22,30 @@ const BookList = () => {
             });
     }, []);
 
+   
+    const suggestedBooks = Array.from({ length: 5 }, () => ({
+        title: faker.lorem.words(3), 
+        author: faker.name.findName(), 
+        id: faker.datatype.uuid(), 
+    }));
+
+    const allBooks = [...books, ...suggestedBooks];
+
     return (
         <div>
             <h2>Book List</h2>
-            <ul>
-                {books.map(book => (
-                    <li key={book.id}>
+            <div>
+                {allBooks.map((book, index) => (
+                    <div key={book.id} style={{ marginLeft: '10px', marginBottom: '10px' }}>
                         <Link to={`/books/${book.id}`}>
                             {book.title} by {book.author}
                         </Link>
-                    </li>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };
 
 export default BookList;
+
