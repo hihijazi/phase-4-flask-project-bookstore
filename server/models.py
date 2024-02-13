@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import validates
 from config import db, metadata
 
+
 db = SQLAlchemy()
 
 
@@ -14,10 +15,10 @@ class Customer(db.Model, SerializerMixin):
     name = db.Column(db.String)
     
     # Add relationship
-    classes = db.relationship('Order', back_populates='customer', cascade = 'all, delete')
+    orders = db.relationship('Order', back_populates='customer', cascade = 'all, delete')
 
     # Add serialization rules
-    serialize_rules=('-Orders.customer',)
+    serialize_rules=('-orders.customer',)
 
     @validates('id', 'name')
     def validate_customer(self, key, value):
@@ -35,14 +36,16 @@ class Customer(db.Model, SerializerMixin):
 
 # Models begin here! 
 
-class Book():
-    tablename = "books"
+class Book(db.Model, SerializerMixin):
+    __tablename__ = "books"
 
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String)
     price = db.Column(db.Float)
 
-    order = db.relationship('Order', back_populates= 'book')
+    orders = db.relationship('Order', back_populates= 'book')
+
+    serialize_rules = ('-orders.book',)
 
     @validates('price')
     def validate_price(self, key, price):
@@ -50,6 +53,10 @@ class Book():
             return price
         else:
             raise ValueError('Price must be a valid integer')
+        
+    def repr(self):
+        return f'<Class {self.id}:  {self.name}: {self.price}'
+
 
 
 class Order(db.Model, SerializerMixin):
@@ -66,7 +73,7 @@ class Order(db.Model, SerializerMixin):
     customer = db.relationship('Customer', back_populates='orders')
 
     # Add serialization rules
-    serialize_rules=('-book.orders', '-customer.orders')
+    serialize_rules=('-book.orders', '-customer.orders',)
 
     # Add validation 
     @validates('name')

@@ -1,1 +1,1 @@
-
+import faker from Faker
