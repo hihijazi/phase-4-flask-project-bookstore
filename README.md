@@ -53,7 +53,7 @@ running:
 python server/app.py
 ```
 
-You can run your React app on [`localhost:4000`](http://localhost:4000) by
+You can run your Flask API on [`127.0.0.1:5000`](http://127.0.0.1:5000/) by
 running:
 
 ```sh
