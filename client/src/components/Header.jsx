@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logoGif from '../assets/logo.gif';
+import logoGif from '../assets/logo.gif'; // Adjusted import path
 
 const Header = () => {
     return (
@@ -22,6 +22,7 @@ const Header = () => {
 };
 
 export default Header;
+
 
 
 
