@@ -6,14 +6,14 @@
 
 ## Description: This App allows you to streamline your bookstore operations.  Manage inventory, process orders, and provide a user-friendly interface for customers to browse, purchase, and review books. 
 
-![project domain model](https://github.com/hihijazi/phase-4-flask-project-bookstore/assets/148264944/9105c87d-6c8a-4b0a-a297-d883fdb5f8be)
+![Screenshot 2024-02-12 104333](https://github.com/hihijazi/phase-4-flask-project-bookstore/assets/148264944/2b9ca23c-b32b-4c4c-816f-0cb3bf66ecff)
 
 ## MVP 
 ##CRUD 
 
-C. Add books, orders, and logins
+C. Add books, orders, and customers
 
-R. Search books andorders
+R. Search books and orders
 
 U. Update books and orders 
 
@@ -46,14 +46,13 @@ pipenv shell
 npm install --prefix client
 ```
 
-You can run your Flask API on [`localhost:5555`](http://localhost:5555) by
+You can run your Flask API on [`127.0.0.1:5000`](http://127.0.0.1:5000/) by
 running:
 
 ```console
 python server/app.py
 ```
 
-You can run your React app on [`localhost:4000`](http://localhost:4000) by
 running:
 
 ```sh
@@ -86,9 +85,9 @@ npm start --prefix client
 
 ## Many-to-many
 
-- User has many orders through books
-- Orders has many users through books
-- Books belong to orders, and a user
+- Customer has many orders through books
+- Orders has many customerss through books
+- Books belong to orders, and a customer
 
 ## Validations 
 
@@ -102,7 +101,7 @@ Add validations to the `Orders` model:
 
 ## Controllers
 
-​​API routes RESTful conventions
+API routes RESTful conventions
 
 ```console
 GET    /books/              
@@ -113,8 +112,8 @@ DELETE /books/:id
 ```          
 
 ```console
-GET    /login/             
-POST   /login/
+GET    /customer/             
+POST   /customer/
 ```           
 
 ```console
