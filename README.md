@@ -46,14 +46,13 @@ pipenv shell
 npm install --prefix client
 ```
 
-You can run your Flask API on [`localhost:5555`](http://localhost:5555) by
+You can run your Flask API on [`127.0.0.1:5000`](http://127.0.0.1:5000/) by
 running:
 
 ```console
 python server/app.py
 ```
 
-You can run your Flask API on [`127.0.0.1:5000`](http://127.0.0.1:5000/) by
 running:
 
 ```sh
@@ -102,7 +101,7 @@ Add validations to the `Orders` model:
 
 ## Controllers
 
-​​API routes RESTful conventions
+API routes RESTful conventions
 
 ```console
 GET    /books/              
