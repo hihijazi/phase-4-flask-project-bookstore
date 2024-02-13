@@ -11,9 +11,9 @@
 ## MVP 
 ##CRUD 
 
-C. Add books, orders, and logins
+C. Add books, orders, and customers
 
-R. Search books andorders
+R. Search books and orders
 
 U. Update books and orders 
 
@@ -113,8 +113,8 @@ DELETE /books/:id
 ```          
 
 ```console
-GET    /login/             
-POST   /login/
+GET    /customer/             
+POST   /customer/
 ```           
 
 ```console
