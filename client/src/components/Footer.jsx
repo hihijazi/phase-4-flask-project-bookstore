@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <footer>
             <div>
-                <p>Blast Bookstore </p>
+                <p>The Boulevard Bookstore </p>
                 <p>&copy; App Completed by Hadil Hijazi, Melissa Velasquez Greene & Zaquari Andl         2024 All rights reserved.</p>
             </div>
         </footer>
