@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-const BookDetail = ({ match }) => {
-
+const BookDetail = () => {
+    const { bookId } = useParams();
     const [book, setBook] = useState(null);
 
     useEffect(() => {
-        
-        fetch(`/api/books/${match.params.id}`)
+        // Fetch book details from an external API using the bookId
+        fetch(`https://api.example.com/books/${bookId}`)
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -20,21 +21,18 @@ const BookDetail = ({ match }) => {
             .catch(error => {
                 console.error('Error:', error);
             });
-    }, [match.params.id]);
+    }, [bookId]);
+
+    if (!book) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div>
-            <h2>Book Details</h2>
-            {book ? (
-                <div>
-                    <p><strong>Title:</strong> {book.title}</p>
-                    <p><strong>Author:</strong> {book.author}</p>
-                    <p><strong>Genre:</strong> {book.genre}</p>
-                    <p><strong>Price:</strong> ${book.price}</p>
-                </div>
-            ) : (
-                <p>Loading book details...</p>
-            )}
+            <h2>{book.title}</h2>
+            <img src={book.image} alt={book.title} />
+            <p>{book.description}</p>
+            {/* Add more details about the book here */}
         </div>
     );
 };
