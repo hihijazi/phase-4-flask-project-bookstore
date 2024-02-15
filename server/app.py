@@ -26,6 +26,12 @@ db.init_app(app)
 def index():
     return 'Welcome to the Bookstore API!'
 
+
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+
 class Books(Resource):
     def get(self):
         books = [book.to_dict() for book in Book.query.all()]
@@ -104,6 +110,7 @@ class Customers(Resource):
             })
 
 api.add_resource(Customers, '/customers')
+
 
 class OrdersById(Resource):
     def get(self, id):
