@@ -15,6 +15,11 @@ db.init_app(app)
 def index():
     return 'Welcome to the Bookstore API!'
 
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+
 
 
 
