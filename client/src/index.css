@@ -8,66 +8,124 @@ body {
 }
 
 .header-container {
-  background-color: #8ae0ad; /* Dark green color for header container */
-  color: white; /* White color for text */
-  padding: 5px; /* Add padding to the header container */
+  background-color: #8ae0ad;
+  color: white; 
+  padding: 5px; 
   display: flex;
-  flex-direction: column; /* Display items vertically */
-  align-items: center; /* Center items horizontally */
+  flex-direction: column; 
+  align-items: center; 
 }
 
 .logo-container {
   display: flex;
-  align-items: center; /* Align items vertically */
+  align-items: center; 
 }
 
 .logo {
-  margin-left: 10px; /* Add margin to the right of the logo */
+  margin-left: 10px; 
 }
 
 .title {
-  font-weight: bold; /* Make the title bold */
+  font-weight: bold; 
   font-size: 72px;
-  margin-right: 254px; /* Remove default margin */
-  display: flex; /* Use flexbox */
-  justify-content: center; /* Center the title horizontally */
+  margin-right: 254px; 
+  display: flex; 
+  justify-content: center; 
   white-space: nowrap;
 }
 
 .links-container {
-  margin-top: 75px; /* Add margin between logo/title and links */
+  margin-top: 75px; 
   display: flex;
-  justify-content: center; /* Center the links horizontally */
+  justify-content: center;
 }
 
 
 .navigation-bar {
-  background-color: #90EE90; /* Light green color for navigation bar */
-  padding: 10px; /* Add padding to the navigation bar */
+  background-color: #90EE90; 
+  padding: 10px; 
 }
 
 ul {
   list-style-type: none;
   padding: 0;
-  margin: 0; /* Remove default margin */
-  display: flex; /* Use flexbox to arrange items horizontally */
+  margin: 0; 
+  display: flex; 
 }
 
 .nav-link {
   display: inline-block;
-  padding: 10px 160px; /* Adjust padding as needed */
-  color: #008080; /* Teal green color for navigation links */
-  font-weight: bold; /* Make navigation links bold */
+  padding: 10px 160px; 
+  color: #008080; 
+  font-weight: bold; 
   text-decoration: none;
-  margin-right: 10px; /* Add margin between links */
+  margin-right: 10px; 
 }
 
 .nav-link:hover {
-  background-color: #66CDAA; /* Change background color on hover */
-  color: white; /* Change text color on hover */
-  border-radius: 5px; /* Add rounded corners on hover */
+  background-color: #66CDAA; 
+  color: white; 
+  border-radius: 5px; 
 }
 
 .nav-link:last-child {
-  margin-right: 0; /* Remove margin for the last link */
+  margin-right: 0; 
+}
+
+.orders-page {
+  background-color: #398969; 
+  color: white; 
+  padding: 20px;
+}
+
+.orders-page table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.orders-page th, .orders-page td {
+  padding: 10px;
+  border-bottom: 1px solid #fff;
+}
+
+.orders-page th {
+  background-color: #8ae0ad;
+  font-weight: bold;
+  text-align: left;
+}
+
+.orders-page tbody tr:nth-child(even) {
+  background-color: #5d9b7f;
+}
+
+.orders-page tbody tr:nth-child(odd) {
+  background-color: #398969;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 10px 160px; 
+  color: #008080; 
+  font-weight: bold; 
+  text-decoration: none;
+  margin-right: 10px; 
+}
+
+.nav-link:not(.active-link) {
+  text-decoration: underline; 
+}
+
+.nav-link:hover {
+  background-color: #66CDAA; 
+  color: white; 
+  border-radius: 5px;
+}
+
+.nav-link:last-child {
+  margin-right: 0; 
+}
+
+.active-link {
+  font-weight: bold; 
 }
