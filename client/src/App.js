@@ -4,13 +4,13 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
+
 import BookList from './components/BookList';
 import Books from './components/Books';
 import Customer from './components/Customer';
 import Orders from './components/Orders';
 import BookDetail from './components/BookDetail';
 import OrderDetail from './components/OrderDetail';
-
 
 
 
@@ -46,7 +46,7 @@ function App() {
       <Route path="/books" element={<Books books={books} onUpdateBook={updateBooks} user={user} />} />
       
       <main>
-        <BookList />
+     
       </main>
       <Footer />
     </div>
