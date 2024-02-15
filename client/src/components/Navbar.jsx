@@ -3,22 +3,26 @@ import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
 
-    const navLinkStyles = ({ isActive }) => {
-        return {
-            fontweight: isActive ? 'bold' : 'normal',
-            textDecoration: isActive ? 'underline' : 'none',
-        };
-    }
+    const navLinkStyles = {
+        fontWeight: 'normal',
+        textDecoration: 'none',
+    };
+
+    const activeStyles = {
+        fontWeight: 'bold',
+        textDecoration: 'underline',
+    };
 
     return (
         <nav>
-            <NavLink style={navLinkStyles} to="/Home">Home</NavLink>
-            <NavLink style={navLinkStyles} to="/books">Books</NavLink>
-            <NavLink style={navLinkStyles} to="/orders">Orders</NavLink>
-            <NavLink style={navLinkStyles} to="/addbook">Add Book</NavLink>
+            {/* <NavLink style={navLinkStyles} activeStyle={activeStyles} to="/home">Home</NavLink>
+            <NavLink style={navLinkStyles} activeStyle={activeStyles} to="/books">Books</NavLink>
+            <NavLink style={navLinkStyles} activeStyle={activeStyles} to="/orders">Orders</NavLink>
+            <NavLink style={navLinkStyles} activeStyle={activeStyles} to="/addbook">Add Book</NavLink> */}
         </nav>
     );
 };
 
 export default Navbar;
+
 

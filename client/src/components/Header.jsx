@@ -1,26 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logoGif from '../assets/logo.gif';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 
-const Header = () => {
-    return (
-        <div className="header-container">
-            <div className="logo-container">
-                <img src={logoGif} alt="Logo" className="logo" />
-                <h1 className="title">The Boulevard Bookstore</h1>
-            </div>
-            <div className="links-container">
-                <nav className="navigation-bar">
-                    <ul>
-                        <li><Link to="/Home" className="nav-link">Home</Link></li>
-                        <li><Link to="/books" className="nav-link">Books</Link></li>
-                        <li><Link to="/orders" className="nav-link">Orders</Link></li>
-                        <li><Link to="/add-book" className="nav-link">Add Book</Link></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    );
-};
+function Header() {
+  return (
+    <Navbar bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand as={Link} to="/">Your App Name</Navbar.Brand>
+        <Nav className="me-auto">
+          <Nav.Link as={Link} to="/">Home</Nav.Link>
+          <Nav.Link as={Link} to="/orders">Orders</Nav.Link>
+          <Nav.Link as={Link} to="/books">Books</Nav.Link>
+          <Nav.Link as={Link} to="/customers">Customers</Nav.Link>
+          <Nav.Link as={Link} to="/add-book">Add Book</Nav.Link>
+        </Nav>
+      </Container>
+    </Navbar>
+  );
+}
 
 export default Header;
