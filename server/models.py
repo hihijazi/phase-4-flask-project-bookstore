@@ -47,6 +47,14 @@ class Book(db.Model, SerializerMixin):
 
     serialize_rules = ('-orders.book',)
 
+    @validates('name')
+    def validate_name(self, key, name):
+        if not name:
+            raise ValueError('Must have a name.')
+        return name
+
+
+
     @validates('price')
     def validate_price(self, key, price):
         if price >= 0:
