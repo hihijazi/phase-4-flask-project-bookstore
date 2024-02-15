@@ -16,8 +16,7 @@ def create_customers():
     customers = []
     for _ in range(10):
         customer = Customer(
-            name=fake.name(),
-            email=fake.email()
+            name=fake.name()
         )
         customers.append(customer)
     return customers
@@ -26,8 +25,7 @@ def create_books():
     books = []
     for _ in range(20):
         book = Book(
-            title=fake.catch_phrase(),
-            author=fake.name(),
+            name=fake.catch_phrase(),
             price=randint(10, 50)
         )
         books.append(book)
@@ -37,9 +35,9 @@ def create_orders(customers, books):
     orders = []
     for _ in range(30):
         order = Order(
+            name=fake.name(),
             customer_id=randint(1, len(customers)),
-            book_id=randint(1, len(books)),
-            quantity=randint(1, 5)
+            book_id=randint(1, len(books))
         )
         orders.append(order)
     return orders

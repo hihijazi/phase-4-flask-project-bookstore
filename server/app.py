@@ -45,7 +45,9 @@ class Books(Resource):
             return make_response({
                 'error':'Validation Error'
             })
-        
+
+api.add_resource(Books, '/books')   
+
 class BooksById(Resource):
     def get(self, id):
         book = Book.query.filter(Book.id == id).first()
@@ -69,7 +71,7 @@ class BooksById(Resource):
                 return make_response({
                     'error': 'Validation error'
                 }, 404)
-            
+
     def delete(self, id):
         book = Book.query.filter(Book.id == id).first()
         if book:
@@ -79,7 +81,9 @@ class BooksById(Resource):
         return make_response({
             'error': 'No Book found'
         }, 404)
-    
+
+api.add_resource(BooksById, '/books/<int:id>')
+
 class Customers(Resource):
     def get(self):
         customer = [customer.to_dict() for customer in Customer.all]
@@ -98,7 +102,9 @@ class Customers(Resource):
             return make_response({
                 'error': 'Validation Error'
             })
-        
+
+api.add_resource(Customers, '/customers')
+
 class OrdersById(Resource):
     def get(self, id):
         order = Order.query.filter(Order.id == id).first()
@@ -131,7 +137,8 @@ class OrdersById(Resource):
         return make_response({
             'error': 'No book found'
         }, 404)
-        
+
+api.add_resource(OrdersById, '/orders/<int:id>')
 
 if __name__ == '__main__':
     app.run(debug=True)
