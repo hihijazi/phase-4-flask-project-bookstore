@@ -1,16 +1,28 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import BookList from './BookList';
-import BookDetail from './BookDetail';
+import { Route, Routes } from 'react-router-dom';
+import { Header } from './components/Header';
+import { Navbar } from './components/Navbar'; 
+import Home from './components/Home';
+import Books from './components/Books';
+import Orders from './components/Orders';
+import AddBook from './components/AddBook';
 
-const App = () => {
+
+
+function App() {
     return (
-        <Router>
-            <Switch>
-                <Route path="/" exact component={BookList} />
-                <Route path="/books/:bookId" component={BookDetail} />
-            </Switch>
-        </Router>
+        <>
+            <div>
+                <Navbar /> 
+                <Header />
+                <Routes>
+                    <Route path="/Home" element={<Home />} />
+                    <Route path="/books" element={<Books />} />
+                    <Route path="/orders" element={<Orders />} />
+                    <Route path="/addbook" element={<AddBook />} />
+                </Routes>
+            </div>
+        </>
     );
 };
 
