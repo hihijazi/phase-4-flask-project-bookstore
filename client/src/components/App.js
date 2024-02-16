@@ -1,11 +1,12 @@
 import { Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import Navbar from "./Navbar";
-import Header from './Header';
-import Footer from './Footer';
-import Orders from './Orders';
-import Books from './Books';
-import AddBook from './AddBook'; 
+import Header from "./Header";
+import Footer from "./Footer";
+import Orders from "./Orders";
+import Books from "./Books";
+import AddBook from "./AddBook";
+import BookDetails from "./BookDetails.js";
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
           <Orders />
         </Route>
         <Route exact path="/books/:id">
-          <Books />
+          <BookDetails />
         </Route>
         <Route exact path="/add-book">
           <AddBook />
