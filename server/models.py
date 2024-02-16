@@ -3,6 +3,8 @@ from sqlalchemy import MetaData
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy_serializer import SerializerMixin
+from faker import Faker
+
 
 metadata = MetaData(naming_convention={
     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
@@ -11,6 +13,7 @@ metadata = MetaData(naming_convention={
 
 db = SQLAlchemy(metadata=metadata)
 
+Faker = Faker() 
 
 class Customer(db.Model, SerializerMixin):
     __tablename__ = 'customers'
@@ -52,7 +55,7 @@ class Book(db.Model, SerializerMixin):
 
     serialize_rules = ('-orders.book',)
 
-    @validates('name')
+    @validates('title')
     def validate_name(self, key, name):
         if not name:
             raise ValueError('Must have a name.')
@@ -67,7 +70,7 @@ class Book(db.Model, SerializerMixin):
         else:
             raise ValueError('Price must be a valid integer')
         
-    def repr(self):
+    def __repr__(self):
         return f'<Class {self.id}:  {self.name}: {self.price}'
 
 

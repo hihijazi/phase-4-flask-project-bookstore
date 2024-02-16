@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
+from models import Book, Order, Customer
 import requests
 from app import app, db
-from models import Book, Order, Customer
+from faker import Faker  # Import Faker
 
 # Define the base URL for the Flask backend API
 BASE_URL = "http://127.0.0.1:5555"
+
+# Create an instance of Faker
+faker = Faker()
 
 with app.app_context():
     # This will delete any existing rows
@@ -14,42 +18,25 @@ with app.app_context():
     Order.query.delete()
     Customer.query.delete()
 
-    # Fetch customers from the Flask backend API
-    print("Fetching customers...")
-    response = requests.get(f"{BASE_URL}/customers")
-    if response.status_code == 200:
-        customers_data = response.json()
-        customers = [Customer(name=customer_data['name']) for customer_data in customers_data]
-    else:
-        print(f"Failed to fetch customers: {response.status_code}")
-        customers = []
+    # Generate fake data for customers
+    print("Generating fake customers...")
+    customers = [Customer(name=faker.name()) for _ in range(10)]  # Generate 10 fake customers
 
-    # Fetch orders from the Flask backend API
-    print("Fetching orders...")
-    response = requests.get(f"{BASE_URL}/orders")
-    if response.status_code == 200:
-        orders_data = response.json()
-        orders = [Order(total_price=order_data['total_price'], customer_id=order_data['customer_id']) for order_data in orders_data]
-    else:
-        print(f"Failed to fetch orders: {response.status_code}")
-        orders = []
+    # Generate fake data for books
+    print("Generating fake books...")
+    books = [Book(title=faker.sentence(), author=faker.name(), price=faker.random_number()) for _ in range(10)]  # Generate 10 fake books
 
-    # Fetch books from the Flask backend API
-    print("Fetching books...")
-    response = requests.get(f"{BASE_URL}/books")
-    if response.status_code == 200:
-        books_data = response.json()
-        books = [Book(title=book_data['title'], author=book_data['author'], price=book_data['price']) for book_data in books_data]
-    else:
-        print(f"Failed to fetch books: {response.status_code}")
-        books = []
+    # Generate fake data for orders
+    print("Generating fake orders...")
+    orders = [Order(total_price=faker.random_number(), customer_id=faker.random_element(elements=range(1, 11))) for _ in range(10)]  # Generate 10 fake orders with random customer IDs
 
-    # Adding objects to the session
+    # Add generated objects to the session
     db.session.add_all(customers)
-    db.session.add_all(orders)
     db.session.add_all(books)
+    db.session.add_all(orders)
     
-    # Committing the session to the database
+    # Commit the session to the database
     db.session.commit()
 
     print("Seeding done!")
+
