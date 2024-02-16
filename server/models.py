@@ -1,11 +1,15 @@
-from sqlalchemy_serializer import SerializerMixin
-from sqlalchemy.ext.associationproxy import association_proxy
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import MetaData
 from sqlalchemy.orm import validates
-from config import db, metadata
+from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy_serializer import SerializerMixin
+
+metadata = MetaData(naming_convention={
+    "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
+})
 
 
-db = SQLAlchemy()
+db = SQLAlchemy(metadata=metadata)
 
 
 class Customer(db.Model, SerializerMixin):
@@ -40,8 +44,9 @@ class Book(db.Model, SerializerMixin):
     __tablename__ = "books"
 
     id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String)
+    title = db.Column(db.String)
     price = db.Column(db.Float)
+    author = db.Column(db.String)   
 
     orders = db.relationship('Order', back_populates= 'book')
 
@@ -71,7 +76,7 @@ class Order(db.Model, SerializerMixin):
     __tablename__ = 'orders'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
+    total_price = db.Column(db.Float)
 
     # Add relationship
     book_id = db.Column(db.Integer, db.ForeignKey('books.id'))
